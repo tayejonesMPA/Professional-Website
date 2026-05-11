@@ -1,0 +1,686 @@
+<!-- redeploy trigger -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tobias (Taye) Jones — Master of Public Administration Candidate (Social Policy)
+</title>Seattle, WA
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --ink:#0a0a0b;
+    --surface:#111114;
+    --card:#16161a;
+    --border:#2a2a30;
+    --accent:#c8a96e;
+    --accent2:#7a9e8a;
+    --text:#e8e6df;
+    --muted:#7a7870;
+    --dim:#3a3835;
+  }
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--ink);
+    color:var(--text);
+    font-family:'DM Mono',monospace;
+    font-weight:300;
+    font-size:13px;
+    line-height:1.8;
+  }
+
+  /* NAV */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:1.2rem 3rem;
+    background:rgba(10,10,11,0.92);
+    border-bottom:1px solid var(--border);
+    backdrop-filter:blur(8px);
+  }
+  .nav-logo{
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.1rem;font-weight:500;
+    color:var(--accent);letter-spacing:0.15em;
+    text-transform:uppercase;
+  }
+  .nav-links{display:flex;gap:2.5rem}
+  .nav-links a{
+    color:var(--muted);text-decoration:none;
+    font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
+    transition:color 0.2s;
+  }
+  .nav-links a:hover{color:var(--accent)}
+
+  /* HERO */
+  #hero{
+    min-height:100vh;
+    display:flex;align-items:center;
+    padding:8rem 3rem 5rem;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-grid{
+    position:absolute;inset:0;
+    background-image:
+      linear-gradient(rgba(42,42,48,0.25) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(42,42,48,0.25) 1px,transparent 1px);
+    background-size:60px 60px;
+    mask-image:radial-gradient(ellipse 80% 60% at 50% 50%,black,transparent);
+  }
+  .hero-content{position:relative;max-width:780px}
+  .hero-tag{
+    display:inline-block;
+    font-size:10px;letter-spacing:0.2em;text-transform:uppercase;
+    color:var(--accent2);
+    border:1px solid var(--accent2);
+    padding:0.3rem 0.9rem;margin-bottom:2rem;
+    border-radius:2px;
+  }
+  h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(3rem,7vw,5.5rem);
+    font-weight:300;line-height:1.05;
+    color:#f0ede6;
+    margin-bottom:1rem;
+  }
+  h1 span{color:var(--accent)}
+  .hero-sub{
+    font-size:12px;letter-spacing:0.08em;color:var(--muted);
+    max-width:500px;margin-bottom:3rem;line-height:2;
+  }
+  .hero-cta{display:flex;gap:1.2rem;flex-wrap:wrap}
+  .btn{
+    display:inline-block;text-decoration:none;
+    font-size:10px;letter-spacing:0.18em;text-transform:uppercase;
+    padding:0.8rem 2rem;border-radius:2px;
+    transition:all 0.2s;cursor:pointer;
+  }
+  .btn-primary{
+    background:var(--accent);color:#0a0a0b;font-weight:400;
+  }
+  .btn-primary:hover{background:#d4b87a}
+  .btn-outline{
+    border:1px solid var(--border);color:var(--muted);
+  }
+  .btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+  .hero-line{
+    position:absolute;right:3rem;top:50%;transform:translateY(-50%);
+    display:flex;flex-direction:column;align-items:center;gap:0.5rem;
+    color:var(--muted);font-size:9px;letter-spacing:0.15em;
+  }
+  .hero-line::before{
+    content:'';display:block;width:1px;height:80px;
+    background:linear-gradient(transparent,var(--border));
+  }
+
+  /* SECTIONS */
+  section{padding:6rem 3rem;max-width:1100px;margin:0 auto}
+  .section-label{
+    font-size:10px;letter-spacing:0.25em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:0.6rem;
+  }
+  .section-title{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(2rem,4vw,3rem);
+    font-weight:300;color:#f0ede6;
+    margin-bottom:3rem;line-height:1.1;
+  }
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+  .about-text p{color:var(--muted);line-height:2;margin-bottom:1.2rem;font-size:13px}
+  .about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+  .stat-card{
+    background:var(--card);border:1px solid var(--border);
+    padding:1.5rem;border-radius:3px;
+  }
+  .stat-num{
+    font-family:'Cormorant Garamond',serif;
+    font-size:2.5rem;font-weight:300;
+    color:var(--accent);line-height:1;margin-bottom:0.3rem;
+  }
+  .stat-label{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted)}
+  .skill-pills{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:2rem}
+  .pill{
+    font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
+    padding:0.35rem 0.9rem;border:1px solid var(--dim);color:var(--muted);
+    border-radius:2px;
+  }
+
+  /* EXPERIENCE */
+  #experience{border-top:1px solid var(--border)}
+  .exp-list{display:flex;flex-direction:column;gap:0;position:relative}
+  .exp-list::before{
+    content:'';position:absolute;left:0;top:0;bottom:0;
+    width:1px;background:var(--border);
+  }
+  .exp-item{
+    padding:2.5rem 0 2.5rem 2.5rem;
+    border-bottom:1px solid var(--border);
+    position:relative;
+    transition:background 0.2s;
+  }
+  .exp-item:last-child{border-bottom:none}
+  .exp-item::before{
+    content:'';position:absolute;
+    left:-4px;top:2.8rem;
+    width:8px;height:8px;border-radius:50%;
+    background:var(--border);border:2px solid var(--ink);
+    transition:background 0.2s;
+  }
+  .exp-item:hover::before{background:var(--accent)}
+  .exp-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;flex-wrap:wrap;gap:0.5rem}
+  .exp-role{
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.3rem;font-weight:500;color:#f0ede6;
+  }
+  .exp-date{
+    font-size:10px;letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--accent);white-space:nowrap;margin-top:0.3rem;
+  }
+  .exp-org{font-size:11px;letter-spacing:0.1em;color:var(--accent2);text-transform:uppercase;margin-bottom:1rem}
+  .exp-desc{color:var(--muted);line-height:2;font-size:13px}
+  .exp-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem}
+  .tag{
+    font-size:9px;letter-spacing:0.1em;text-transform:uppercase;
+    padding:0.25rem 0.7rem;background:var(--card);border:1px solid var(--dim);
+    color:var(--muted);border-radius:2px;
+  }
+
+  /* RESEARCH */
+  #research{border-top:1px solid var(--border)}
+  .research-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+  .research-card{
+    background:var(--card);border:1px solid var(--border);
+    padding:2rem;border-radius:3px;
+    transition:border-color 0.2s,transform 0.2s;
+    cursor:default;
+  }
+  .research-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+  .research-type{
+    font-size:9px;letter-spacing:0.18em;text-transform:uppercase;
+    color:var(--accent2);margin-bottom:0.8rem;
+    display:flex;align-items:center;gap:0.5rem;
+  }
+  .research-type::before{content:'';display:inline-block;width:20px;height:1px;background:var(--accent2)}
+  .research-title a{color:#f0ede6;text-decoration:none;border-bottom:1px solid var(--dim);transition:border-color 0.2s,color 0.2s}
+  .research-title a:hover{color:var(--accent);border-color:var(--accent)}
+  .media-links{display:flex;gap:0.8rem;margin-top:1rem;flex-wrap:wrap}
+  .media-link{
+    display:inline-flex;align-items:center;gap:0.4rem;
+    font-size:9px;letter-spacing:0.12em;text-transform:uppercase;
+    padding:0.3rem 0.8rem;border:1px solid var(--dim);
+    color:var(--muted);text-decoration:none;border-radius:2px;
+    transition:border-color 0.2s,color 0.2s;
+  }
+  .media-link:hover{border-color:var(--accent);color:var(--accent)}
+  .media-link svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.2rem;font-weight:400;color:#f0ede6;
+    margin-bottom:0.8rem;line-height:1.3;
+  }
+  .research-desc{font-size:12px;color:var(--muted);line-height:1.9;margin-bottom:1.2rem}
+  .research-meta{
+    font-size:10px;letter-spacing:0.08em;color:var(--dim);
+    border-top:1px solid var(--border);padding-top:1rem;
+  }
+
+  /* CERTIFICATIONS */
+  #certifications{border-top:1px solid var(--border)}
+  .cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+  .cert-card{
+    background:var(--card);border:1px solid var(--border);
+    padding:1.8rem;border-radius:3px;
+    display:flex;gap:1.2rem;align-items:flex-start;
+    transition:border-color 0.2s;
+  }
+  .cert-card:hover{border-color:var(--accent)}
+  .cert-icon{
+    width:40px;height:40px;flex-shrink:0;
+    background:var(--dim);border-radius:2px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .cert-icon svg{width:18px;height:18px;stroke:var(--accent);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+  .cert-body{}
+  .cert-name{
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.1rem;font-weight:400;color:#f0ede6;
+    margin-bottom:0.3rem;line-height:1.3;
+  }
+  .cert-issuer{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent2);margin-bottom:0.5rem}
+  .cert-desc{font-size:12px;color:var(--muted);line-height:1.8}
+  .cert-date{font-size:10px;letter-spacing:0.1em;color:var(--dim);margin-top:0.6rem}
+
+  /* VOLUNTEER */
+  #volunteer{border-top:1px solid var(--border)}
+
+  @media(max-width:700px){
+    .cert-grid{grid-template-columns:1fr}
+  }
+
+  /* CONTACT */
+  #contact{border-top:1px solid var(--border)}
+  .contact-wrap{
+    display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;
+  }
+  .contact-text p{color:var(--muted);line-height:2;margin-bottom:1.5rem}
+  .contact-links{display:flex;flex-direction:column;gap:1rem}
+  .contact-item{
+    display:flex;align-items:center;gap:1rem;
+    padding:1.2rem 1.5rem;
+    background:var(--card);border:1px solid var(--border);
+    border-radius:3px;text-decoration:none;
+    transition:border-color 0.2s;
+  }
+  .contact-item:hover{border-color:var(--accent)}
+  .contact-icon{
+    width:36px;height:36px;
+    background:var(--dim);border-radius:2px;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .contact-icon svg{width:16px;height:16px;stroke:var(--accent);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+  .contact-item-text{flex:1}
+  .contact-item-label{font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted)}
+  .contact-item-value{font-size:13px;color:#f0ede6}
+
+  /* FOOTER */
+  footer{
+    border-top:1px solid var(--border);
+    padding:2rem 3rem;
+    display:flex;justify-content:space-between;align-items:center;
+    max-width:1100px;margin:0 auto;
+  }
+  footer p{font-size:10px;letter-spacing:0.1em;color:var(--muted)}
+
+  @media(max-width:700px){
+    nav{padding:1rem 1.5rem}
+    .nav-links{gap:1.5rem}
+    #hero{padding:7rem 1.5rem 4rem}
+    section{padding:4rem 1.5rem}
+    .about-grid,.research-grid,.contact-wrap{grid-template-columns:1fr}
+    .about-stats{grid-template-columns:1fr 1fr}
+    .hero-line{display:none}
+    footer{flex-direction:column;gap:1rem;text-align:center}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">T. Jones</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#research">Research</a>
+    <a href="#volunteer">Volunteer</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div id="hero" style="min-height:100vh;display:flex;align-items:center;padding:8rem 3rem 5rem;position:relative;overflow:hidden;">
+  <div class="hero-grid"></div>
+  <div style="max-width:1100px;margin:0 auto;width:100%;position:relative;">
+    <div class="hero-content">
+      <div class="hero-tag">Public Administration &amp; Governance</div>
+      <h1>Taye<br><span>Jones</span></h1>
+      <p class="hero-sub">Master of Public Administration candidate with a proven history of data-driven policy work across multiple forms of government. </p>
+      <div class="hero-cta">
+        <a href="#research" class="btn btn-primary">View Research</a>
+        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-line">
+      <span style="writing-mode:vertical-rl">Seattle, WA</span>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">01 — Profile</div>
+  <div class="section-title">About Me</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I am a graduate student at the University of Washington pursuing a Master of Public Administration with a concentration in social policy, focused on equity-centered, data‑driven decision‑making in state and local government.</p>
+      <p>My academic and professional experience centers on legislative analysis, housing and behavioral health policy, and public‑sector operations. I have supported elected officials and agency leadership by translating complex data, research findings, and statutory language into clear, actionable insights. Across roles in the Washington State Legislature and executive agencies, I have contributed to policy implementation, legislative response, and program improvement in fast‑paced government environments.</p>
+      <p>I am particularly interested in housing stability, behavioral health, and administrative systems that shape equity outcomes, and I am seeking opportunities for public‑sector employment, applied policy analysis, and professional networking.</p>
+
+      <div class="skill-pills">
+        <span class="pill">Policy Analysis</span>
+        <span class="pill">Mixed-Methods Research</span>
+        <span class="pill">STATA & Excel</span>
+        <span class="pill">Policy Memos & Briefs</span>
+        <span class="pill">Knowledge Translation</span>
+        <span class="pill">Stakeholder Engagement</span>
+        <span class="pill">Project Coordination</span>
+      </div>
+    </div>
+    <div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Active Research Projects</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Policy Briefs Drafted</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Representatives Served</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">1 (More coming soon)</div>
+          <div class="stat-label">Published Works</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" style="max-width:1100px;border-top:1px solid var(--border)">
+  <div class="section-label">02 — Career</div>
+  <div class="section-title">Experience</div>
+  <div class="exp-list">
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Administration Assistant III</div>
+          <div class="exp-org">Washington State Department of Commerce &nbsp;·&nbsp; Housing Division</div>
+        </div>
+        <div class="exp-date">2024 - 2025</div>
+      </div>
+      <p class="exp-desc">In this role, I supported the Data & Performance Unit within a statewide executive agency, contributing to both administrative operations and policy‑adjacent work. I coordinated internal workflows, supported cross‑team communication, and synthesized policy and performance data for leadership use. I regularly responded to legislative inquiries and public records requests, translating technical or statutory information into clear written materials. In addition, I handled fiscal and administrative responsibilities, managing and approving expenditures up to $17,000 while ensuring compliance with state regulations and internal controls.</p>
+      <div class="exp-tags">
+        <span class="tag">Legislative and Public Records Response</span>
+        <span class="tag">Policy & Performance Data Synthesis</span>
+        <span class="tag">Administrative and Fiscal Compliance</span>
+        <span class="tag">Cross-Functional Coordination</span>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Legislative Intern</div>
+          <div class="exp-org">Washington State House of Representatives </div>
+        </div>
+        <div class="exp-date">2024 - 2024</div>
+      </div>
+      <p class="exp-desc">As a legislative intern, I worked in a fast‑paced policymaking environment supporting research, bill tracking, and constituent engagement. I monitored legislation across housing, land use, and community development policy areas, tracking amendments, committee activity, and floor action. I drafted policy briefs, bill summaries, and internal memos that supported legislative staff decision‑making and helped translate complex bill language into accessible analysis. I also assisted with stakeholder meetings and constituent communications during session.</p>
+      <div class="exp-tags">
+        <span class="tag">Legislative Research and Bill Tracking</span>
+        <span class="tag">Policy Brief and Memorandum Writing</span>
+        <span class="tag">Stakeholder and Constituent Engagement</span>
+        <span class="tag">Rapid Policy Analysis</span>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Administrative Intern</div>
+          <div class="exp-org">Washington State Department of Social & Health Services &nbsp;·&nbsp; Eastern State Hospital</div>
+        </div>
+        <div class="exp-date">2023 - 2023</div>
+      </div>
+      <p class="exp-desc">In my administrative internship at DSHS, I supported behavioral health–related programs through policy research, compliance review, and administrative analysis. I conducted research on program requirements and operational practices, then presented findings and recommendations to leadership in clear, accessible formats. I also led a process improvement effort aimed at standardizing internal communications, contributing to clearer workflows and more consistent information sharing within a large public institution.</p>
+      <div class="exp-tags">
+        <span class="tag">Behavioral Health Policy Research</span>
+        <span class="tag">Program Compliance Analysis</span>
+        <span class="tag">Process Improvement</span>
+        <span class="tag">Executive‑Level Communication</span>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Research Assistant</div>
+           <div class="exp-org">Division of Governmental Studies and Services &nbsp;·&nbsp; Washington State University</div>
+        </div>
+        <div class="exp-date">2022 - 2022</div>
+      </div>
+      <p class="exp-desc">As a research assistant, I contributed to applied research examining housing instability and homelessness across Washington State. I conducted both qualitative and quantitative analysis, working with datasets and stakeholder input to identify trends and policy‑relevant findings. This work contributed to a published report that informed Washington’s Homeless Housing Strategic Plan. I helped synthesize research findings into actionable recommendations tailored for policymakers and state and local decision‑makers.</p>
+      <div class="exp-tags">
+        <span class="tag">Housing and Homelessness Policy Analysis</span>
+        <span class="tag">Data Analysis and Interpretation</span>
+        <span class="tag">Policy‑Relevant Writing</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- RESEARCH -->
+<section id="research" style="max-width:1100px;border-top:1px solid var(--border)">
+  <div class="section-label">03 — Scholarship</div>
+  <div class="section-title">Research &amp; Publications</div>
+
+  <div class="research-grid">
+
+    <!-- Research Paper -->
+    <div class="research-card">
+      <div class="research-type">Legislative Report</div>
+
+      <div class="research-title">
+        <a
+          href="https://s3.wp.wsu.edu/uploads/sites/2180/2022/12/Housing-Security_Fact-Finding_Year-2-Report_Revised-12.23.2022.pdf"
+          target="_blank"
+          rel="noopener"
+        >
+          Status of Fact‑Finding Year 2 (Revised): Pathways to Housing Security
+        </a>
+      </div>
+
+      <div class="research-desc">
+        Statewide applied research examining drivers of housing instability and homelessness in Washington.
+        Findings informed Washington’s Homeless Housing Strategic Plan.
+      </div>
+
+      <div class="research-meta">
+        Washington State University · 2023
+      </div>
+    </div>
+
+    <!-- Capstone Project -->
+    <div class="research-card">
+      <div class="research-type">Capstone Project (In Development)</div>
+      <div class="research-title">Master of Public Administration Capstone</div>
+      <div class="research-desc">
+        Applied capstone project to be completed during the MPA program, focusing on a social policy or
+        administrative challenge in partnership with a public or nonprofit organization.
+      </div>
+      <div class="research-meta">
+        University of Washington Evans School · 2027
+      </div>
+    </div>
+
+    <!-- Media Feature -->
+    <div class="research-card">
+      <div class="research-type">Media Feature</div>
+      <div class="research-title">Featured in Eastern State Hospital News</div>
+      <div class="research-desc">
+        A news article published by Eastern State Hospital (DSHS) highlighting contributions made during the administrative internship, including process improvement work and behavioral health policy research. The feature was also shared by DSHS on LinkedIn as institutional recognition of the internship's impact.
+      </div>
+      <div class="research-meta">
+        Washington State DSHS · Eastern State Hospital · 2023
+      </div>
+      <div class="media-links">
+        <!-- Replace YOUR_PDF_FILENAME.pdf with the actual filename once uploaded to your GitHub repo -->
+        <a href="YOUR_PDF_FILENAME.pdf" target="_blank" rel="noopener" class="media-link">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Read Article (PDF)
+        </a>
+        <!-- Replace with your actual LinkedIn post URL -->
+        <a href="YOUR_LINKEDIN_POST_URL" target="_blank" rel="noopener" class="media-link">
+          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          DSHS LinkedIn Post
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- VOLUNTEER -->
+<section id="volunteer" style="max-width:1100px;border-top:1px solid var(--border)">
+  <div class="section-label">05 — Community</div>
+  <div class="section-title">Volunteer Work</div>
+  <div class="exp-list">
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Diversity, Equity &amp; Inclusion Chair</div>
+          <div class="exp-org">Sigma Nu Fraternity &nbsp;·&nbsp; Washington State University</div>
+        </div>
+        <div class="exp-date">2021 — 2022</div>
+      </div>
+      <p class="exp-desc">Served on the executive board, leading initiatives that resulted in the recruitment of the most diverse member cohort among fraternities at WSU. Actively participated in bi-weekly DEI meetings, contributing to the development and implementation of inclusive practices and policies within the fraternity.</p>
+      <div class="exp-tags">
+        <span class="tag">DEI Leadership</span>
+        <span class="tag">Inclusive Policy Development</span>
+        <span class="tag">Recruitment Strategy</span>
+        <span class="tag">Executive Board</span>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Mental Health Chair</div>
+          <div class="exp-org">Sigma Nu Fraternity &nbsp;·&nbsp; Washington State University</div>
+        </div>
+        <div class="exp-date">2022 — 2023</div>
+      </div>
+      <p class="exp-desc">Pioneered the integration of harm reduction tools — including Narcan and fentanyl test strips — within the fraternity, enhancing the safety and well-being of members. Developed and delivered presentations and workshops focused on drug safety, mental health awareness, and suicide prevention, fostering a culture of care and support.</p>
+      <div class="exp-tags">
+        <span class="tag">Harm Reduction</span>
+        <span class="tag">Mental Health Advocacy</span>
+        <span class="tag">Suicide Prevention</span>
+        <span class="tag">Workshop Facilitation</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" style="max-width:1100px;border-top:1px solid var(--border)">
+  <div class="section-label">06 — Credentials</div>
+  <div class="section-title">Certifications</div>
+  <div class="cert-grid">
+
+    <div class="cert-card">
+      <div class="cert-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M8.56 2.75c.07.08.1.18.1.29v3.33L12 8l3.34-1.63V3.04c0-.11.03-.21.1-.29"/><path d="M15.5 16.5L12 21l-3.5-4.5"/><path d="M12 12v9"/></svg>
+      </div>
+      <div class="cert-body">
+        <div class="cert-name">[Certification Name]</div>
+        <div class="cert-issuer">[Issuing Organization]</div>
+        <div class="cert-desc">[Brief description of what this certification covers or why it's relevant to your work in public administration / policy.]</div>
+        <div class="cert-date">Issued [Month Year]</div>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      </div>
+      <div class="cert-body">
+        <div class="cert-name">[Certification Name]</div>
+        <div class="cert-issuer">[Issuing Organization]</div>
+        <div class="cert-desc">[Brief description of what this certification covers or why it's relevant to your work in public administration / policy.]</div>
+        <div class="cert-date">Issued [Month Year]</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="max-width:1100px;border-top:1px solid var(--border)">
+  <div class="section-label">07 — Connect</div>
+  <div class="section-title">Contact</div>
+  <div class="contact-wrap">
+    <div class="contact-text">
+      <p>
+        Available for interviews, research, or whatever questions you may have.
+        I welcome inquiries from government agencies, research institutions,
+        and mission-driven organizations.
+      </p>
+      <p>
+        For urgent matters, email is preferred. Response time is typically 24–48 hours.
+      </p>
+      <a
+        href="mailto:tayejones131@gmail.com"
+        class="btn btn-primary"
+        style="display:inline-block;margin-top:0.5rem"
+      >
+        Send a Message
+      </a>
+    </div>
+
+    <div class="contact-links">
+      <!-- Email -->
+      
+<a
+  href="https://mail.google.com/mail/?view=cm&fs=1&to=tayejones131@gmail.com"
+  class="contact-item"
+  target="_blank"
+  rel="noopener"
+>
+
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="M2 7l10 7 10-7"/>
+          </svg>
+        </div>
+        <div class="contact-item-text">
+          <div class="contact-item-label">Email</div>
+          <div class="contact-item-value">
+            taye [dot] jones [at] gmail [dot] com
+          </div>
+        </div>
+      </a>
+
+      <!-- LinkedIn -->
+      <a
+        href="https://www.linkedin.com/in/tobias-jones-7924b721b"
+        class="contact-item"
+        target="_blank"
+        rel="noopener"
+      >
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
+            <rect x="2" y="9" width="4" height="12"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+        </div>
+        <div class="contact-item-text">
+          <div class="contact-item-label">LinkedIn</div>
+          <div class="contact-item-value">
+            linkedin.com/in/tobias-jones-7924b721b
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Tobias (Taye) Jones &nbsp;·&nbsp; Seattle, WA</p>
+  <p style="text-align:right">Master of Public Administration Candidate</p>
+</footer>
